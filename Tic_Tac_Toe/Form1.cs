@@ -160,5 +160,11 @@ namespace Tic_Tac_Toe
             }
             catch { }
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            Form2 f2 = new Form2();
+            f2.ShowDialog();
+        }
     }
 }

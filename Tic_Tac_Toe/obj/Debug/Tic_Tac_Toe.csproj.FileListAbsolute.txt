@@ -16,3 +16,4 @@ C:\Users\Alexander\Documents\GitHub\Tic_Tac_Toe\Tic_Tac_Toe\obj\Debug\Tic_Tac_To
 C:\Users\Alexander\Documents\GitHub\Tic_Tac_Toe\Tic_Tac_Toe\obj\Debug\Tic_Tac_Toe.Form1.resources
 C:\Users\Alexander\Documents\GitHub\Tic_Tac_Toe\Tic_Tac_Toe\obj\Debug\Tic_Tac_Toe.Properties.Resources.resources
 C:\Users\Alexander\Documents\GitHub\Tic_Tac_Toe\Tic_Tac_Toe\obj\Debug\Tic_Tac_Toe.csproj.GenerateResource.Cache
+C:\Users\Alexander\Documents\GitHub\Tic_Tac_Toe\Tic_Tac_Toe\obj\Debug\Tic_Tac_Toe.Form2.resources
