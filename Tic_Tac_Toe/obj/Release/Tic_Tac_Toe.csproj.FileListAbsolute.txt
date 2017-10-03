@@ -1,0 +1,9 @@
+C:\Users\Alexander\Documents\GitHub\Tic_Tac_Toe\Tic_Tac_Toe\bin\Release\Tic_Tac_Toe.exe.config
+C:\Users\Alexander\Documents\GitHub\Tic_Tac_Toe\Tic_Tac_Toe\bin\Release\Tic_Tac_Toe.exe
+C:\Users\Alexander\Documents\GitHub\Tic_Tac_Toe\Tic_Tac_Toe\bin\Release\Tic_Tac_Toe.pdb
+C:\Users\Alexander\Documents\GitHub\Tic_Tac_Toe\Tic_Tac_Toe\obj\Release\Tic_Tac_Toe.Form1.resources
+C:\Users\Alexander\Documents\GitHub\Tic_Tac_Toe\Tic_Tac_Toe\obj\Release\Tic_Tac_Toe.Form2.resources
+C:\Users\Alexander\Documents\GitHub\Tic_Tac_Toe\Tic_Tac_Toe\obj\Release\Tic_Tac_Toe.Properties.Resources.resources
+C:\Users\Alexander\Documents\GitHub\Tic_Tac_Toe\Tic_Tac_Toe\obj\Release\Tic_Tac_Toe.csproj.GenerateResource.Cache
+C:\Users\Alexander\Documents\GitHub\Tic_Tac_Toe\Tic_Tac_Toe\obj\Release\Tic_Tac_Toe.exe
+C:\Users\Alexander\Documents\GitHub\Tic_Tac_Toe\Tic_Tac_Toe\obj\Release\Tic_Tac_Toe.pdb

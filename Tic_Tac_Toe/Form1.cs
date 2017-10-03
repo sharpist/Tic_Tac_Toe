@@ -76,6 +76,13 @@ namespace Tic_Tac_Toe
 
         bool turn = true; // true = X turn, false = Y turn
         byte turn_count = 0;
+        static string player1, player2;
+
+        public static void setPlayerNames(string n1, string n2)
+        {
+            player1 = n1;
+            player2 = n2;
+        }
 
         private void button_click(object sender, EventArgs e)
         {
@@ -127,12 +134,12 @@ namespace Tic_Tac_Toe
                 string winner = "";
                 if (turn)
                 {
-                    winner = "O";
+                    winner = player2;
                     o_win_count.Text = (Int32.Parse(o_win_count.Text) + 1).ToString();
                 }
                 else
                 {
-                    winner = "X";
+                    winner = player1;
                     x_win_count.Text = (Int32.Parse(x_win_count.Text) + 1).ToString();
                 }
 
@@ -165,6 +172,8 @@ namespace Tic_Tac_Toe
         {
             Form2 f2 = new Form2();
             f2.ShowDialog();
+            label1.Text = player1;
+            label3.Text = player2;
         }
     }
 }
