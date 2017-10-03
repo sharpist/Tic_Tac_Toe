@@ -12,23 +12,70 @@ namespace Tic_Tac_Toe
 {
     public partial class Form1 : Form
     {
-        bool turn = true; // true = X turn, false = Y turn
-        byte turn_count = 0;
-
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        #region MenuStrip
+        private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("\"Tic Tac Toe\" game (AI isn't implemented).\nBy Alexander Usov", "Tic Tac Toe About");
+            turn = true;
+            turn_count = 0;
+
+            foreach (Control c in Controls)
+            {
+                try
+                {
+                    Button b = (Button)c;
+                    b.Enabled = true;
+                    b.Text = "";
+                }
+                catch { }
+            }
+        }
+
+        private void resetWinCountToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            x_win_count.Text = "0";
+            draw_count.Text = "0";
+            o_win_count.Text = "0";
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("\"Tic Tac Toe\" game (AI isn't implemented).\nBy Alexander Usov", "Tic Tac Toe About");
+        }
+        #endregion
+
+        #region Previewing
+        private void button_enter(object sender, EventArgs e)
+        {
+            Button b = (Button)sender;
+            if (b.Enabled)
+            {
+                if (turn)
+                    b.Text = "X";
+                else
+                    b.Text = "O";
+            }
+        }
+
+        private void button_leave(object sender, EventArgs e)
+        {
+            Button b = (Button)sender;
+            if (b.Enabled)
+                b.Text = "";
+        }
+        #endregion
+
+        bool turn = true; // true = X turn, false = Y turn
+        byte turn_count = 0;
 
         private void button_click(object sender, EventArgs e)
         {
@@ -49,6 +96,7 @@ namespace Tic_Tac_Toe
         {
             bool there_is_a_winner = false;
 
+            #region IF-ELSE cascade
             // horizontal checks
             if ((A1.Text == A2.Text) && (A2.Text == A3.Text) && (!A1.Enabled))
                 there_is_a_winner = true;
@@ -70,7 +118,7 @@ namespace Tic_Tac_Toe
                 there_is_a_winner = true;
             else if ((A3.Text == B2.Text) && (B2.Text == C1.Text) && (!C1.Enabled))
                 there_is_a_winner = true;
-
+            #endregion
 
             if (there_is_a_winner)
             {
@@ -78,16 +126,25 @@ namespace Tic_Tac_Toe
 
                 string winner = "";
                 if (turn)
+                {
                     winner = "O";
+                    o_win_count.Text = (Int32.Parse(o_win_count.Text) + 1).ToString();
+                }
                 else
+                {
                     winner = "X";
+                    x_win_count.Text = (Int32.Parse(x_win_count.Text) + 1).ToString();
+                }
 
                 MessageBox.Show(winner + " Wins!", "Yay!");
             }
             else
             {
                 if (turn_count == 9)
+                {
+                    draw_count.Text = (Int32.Parse(draw_count.Text) + 1).ToString();
                     MessageBox.Show("Draw!", "Bummer!");
+                }
             }
         }
 
@@ -99,23 +156,6 @@ namespace Tic_Tac_Toe
                 {
                     Button b = (Button)c;
                     b.Enabled = false;
-                }
-            }
-            catch { }
-        }
-
-        private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            turn = true;
-            turn_count = 0;
-
-            try
-            {
-                foreach (Control c in Controls)
-                {
-                    Button b = (Button)c;
-                    b.Enabled = true;
-                    b.Text = "";
                 }
             }
             catch { }
