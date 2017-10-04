@@ -17,6 +17,18 @@ namespace Tic_Tac_Toe
             InitializeComponent();
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            Form2 f2 = new Form2();
+            f2.ShowDialog();
+            if (player1 != null && player1 != String.Empty)
+                label1.Text = player1;
+            if (player2 != null && player2 != String.Empty)
+                label3.Text = player2;
+
+            // setPlayerDefaultsToolStripMenuItem.PerformClick();
+        }
+
         #region MenuStrip
         private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -33,6 +45,12 @@ namespace Tic_Tac_Toe
                 }
                 catch { }
             }
+        }
+
+        private void setPlayerDefaultsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // label1.Text = "Alexander";
+            label3.Text = "Computer";
         }
 
         private void resetWinCountToolStripMenuItem_Click(object sender, EventArgs e)
@@ -74,7 +92,8 @@ namespace Tic_Tac_Toe
         }
         #endregion
 
-        bool turn = true; // true = X turn, false = Y turn
+        bool turn = true; // true = X turn, false = O turn
+        bool against_computer = false;
         byte turn_count = 0;
         static string player1, player2;
 
@@ -86,17 +105,28 @@ namespace Tic_Tac_Toe
 
         private void button_click(object sender, EventArgs e)
         {
-            Button b = (Button)sender;
-            if (turn)
-                b.Text = "X";
+            if ((label1.Text == "Player 1") || (label3.Text == "Player 2"))
+            {
+                MessageBox.Show("You must specify the players' names before you can start!\nType Computer (for Player 2) to play against the computer.");
+            }
             else
-                b.Text = "O";
+            {
+                Button b = (Button)sender;
+                if (turn)
+                    b.Text = "X";
+                else
+                    b.Text = "O";
 
-            turn = !turn;
-            b.Enabled = false;
-            turn_count++;
+                turn = !turn;
+                b.Enabled = false;
+                turn_count++;
 
-            checkForWinner();
+                checkForWinner();
+            }
+
+            // check to see if playing against computer and if it's O's turn
+            if ((!turn) && (against_computer))
+                computer_make_move();
         }
 
         private void checkForWinner()
@@ -134,12 +164,18 @@ namespace Tic_Tac_Toe
                 string winner = "";
                 if (turn)
                 {
-                    winner = player2;
+                    if (player2 != null && player2 != String.Empty)
+                        winner = player2;
+                    else
+                        winner = "Player 2";
                     o_win_count.Text = (Int32.Parse(o_win_count.Text) + 1).ToString();
                 }
                 else
                 {
-                    winner = player1;
+                    if (player1 != null && player1 != String.Empty)
+                        winner = player1;
+                    else
+                        winner = "Player 1";
                     x_win_count.Text = (Int32.Parse(x_win_count.Text) + 1).ToString();
                 }
 
@@ -155,6 +191,11 @@ namespace Tic_Tac_Toe
             }
         }
 
+        private void computer_make_move()
+        {
+            // ToDO AI
+        }
+
         private void disableButtons()
         {
             try
@@ -168,12 +209,12 @@ namespace Tic_Tac_Toe
             catch { }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void label3_TextChanged(object sender, EventArgs e)
         {
-            Form2 f2 = new Form2();
-            f2.ShowDialog();
-            label1.Text = player1;
-            label3.Text = player2;
+            if (label3.Text.ToUpper() == "COMPUTER")
+                against_computer = true;
+            else
+                against_computer = false;
         }
     }
 }
