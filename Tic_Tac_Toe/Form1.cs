@@ -67,7 +67,7 @@ namespace Tic_Tac_Toe
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("\"Tic Tac Toe\" game (AI isn't implemented).\nBy Alexander Usov", "Tic Tac Toe About");
+            MessageBox.Show("\"Tic Tac Toe\" game (AI design completed).\nBy Alexander Usov", "Tic Tac Toe About");
         }
         #endregion
 
