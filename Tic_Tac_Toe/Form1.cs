@@ -17,6 +17,7 @@ namespace Tic_Tac_Toe
             InitializeComponent();
         }
 
+        #region CallingForm2
         private void Form1_Load(object sender, EventArgs e)
         {
             Form2 f2 = new Form2();
@@ -28,6 +29,17 @@ namespace Tic_Tac_Toe
 
             // setPlayerDefaultsToolStripMenuItem.PerformClick();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            this.Form1_Load(null, null);
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            this.Form1_Load(null, null);
+        }
+        #endregion
 
         #region MenuStrip
         private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
@@ -50,7 +62,8 @@ namespace Tic_Tac_Toe
         private void setPlayerDefaultsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // label1.Text = "Alexander";
-            label3.Text = "Computer";
+            player2 = "Computer";
+            label3.Text = player2;
         }
 
         private void resetWinCountToolStripMenuItem_Click(object sender, EventArgs e)

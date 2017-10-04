@@ -240,6 +240,7 @@
             this.label1.TabIndex = 10;
             this.label1.Text = "Player 1";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -267,6 +268,7 @@
             this.label3.Text = "Player 2";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label3.TextChanged += new System.EventHandler(this.label3_TextChanged);
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // x_win_count
             // 
