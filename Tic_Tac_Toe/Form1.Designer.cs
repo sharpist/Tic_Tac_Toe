@@ -32,6 +32,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setPlayerDefaultsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resetWinCountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,8 +52,6 @@
             this.x_win_count = new System.Windows.Forms.Label();
             this.draw_count = new System.Windows.Forms.Label();
             this.o_win_count = new System.Windows.Forms.Label();
-            this.resetWinCountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.setPlayerDefaultsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -83,6 +83,20 @@
             this.newGameToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.newGameToolStripMenuItem.Text = "New Game";
             this.newGameToolStripMenuItem.Click += new System.EventHandler(this.newGameToolStripMenuItem_Click);
+            // 
+            // setPlayerDefaultsToolStripMenuItem
+            // 
+            this.setPlayerDefaultsToolStripMenuItem.Name = "setPlayerDefaultsToolStripMenuItem";
+            this.setPlayerDefaultsToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.setPlayerDefaultsToolStripMenuItem.Text = "Set Player Defaults";
+            this.setPlayerDefaultsToolStripMenuItem.Click += new System.EventHandler(this.setPlayerDefaultsToolStripMenuItem_Click);
+            // 
+            // resetWinCountToolStripMenuItem
+            // 
+            this.resetWinCountToolStripMenuItem.Name = "resetWinCountToolStripMenuItem";
+            this.resetWinCountToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.resetWinCountToolStripMenuItem.Text = "Reset Win Count";
+            this.resetWinCountToolStripMenuItem.Click += new System.EventHandler(this.resetWinCountToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
@@ -224,7 +238,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 13);
             this.label1.TabIndex = 10;
-            this.label1.Text = "Player 1 Wins";
+            this.label1.Text = "Player 1";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
@@ -250,7 +264,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(79, 13);
             this.label3.TabIndex = 12;
-            this.label3.Text = "Player 2 Wins";
+            this.label3.Text = "Player 2";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label3.TextChanged += new System.EventHandler(this.label3_TextChanged);
             // 
@@ -280,20 +294,6 @@
             this.o_win_count.Size = new System.Drawing.Size(13, 13);
             this.o_win_count.TabIndex = 15;
             this.o_win_count.Text = "0";
-            // 
-            // resetWinCountToolStripMenuItem
-            // 
-            this.resetWinCountToolStripMenuItem.Name = "resetWinCountToolStripMenuItem";
-            this.resetWinCountToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.resetWinCountToolStripMenuItem.Text = "Reset Win Count";
-            this.resetWinCountToolStripMenuItem.Click += new System.EventHandler(this.resetWinCountToolStripMenuItem_Click);
-            // 
-            // setPlayerDefaultsToolStripMenuItem
-            // 
-            this.setPlayerDefaultsToolStripMenuItem.Name = "setPlayerDefaultsToolStripMenuItem";
-            this.setPlayerDefaultsToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.setPlayerDefaultsToolStripMenuItem.Text = "Set Player Defaults";
-            this.setPlayerDefaultsToolStripMenuItem.Click += new System.EventHandler(this.setPlayerDefaultsToolStripMenuItem_Click);
             // 
             // Form1
             // 

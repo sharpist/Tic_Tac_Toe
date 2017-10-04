@@ -103,9 +103,17 @@ namespace Tic_Tac_Toe
             player2 = n2;
         }
 
+        private void label3_TextChanged(object sender, EventArgs e)
+        {
+            if (label3.Text.ToUpper() == "COMPUTER")
+                against_computer = true;
+            else
+                against_computer = false;
+        }
+
         private void button_click(object sender, EventArgs e)
         {
-            if ((label1.Text == "Player 1") || (label3.Text == "Player 2"))
+            if ((label3.Text == "Player 2"))
             {
                 MessageBox.Show("You must specify the players' names before you can start!\nType Computer (for Player 2) to play against the computer.");
             }
@@ -167,7 +175,12 @@ namespace Tic_Tac_Toe
                     if (player2 != null && player2 != String.Empty)
                         winner = player2;
                     else
-                        winner = "Player 2";
+                    {
+                        if (label3.Text == "Computer")
+                            winner = "Computer";
+                        else
+                            winner = "Player 2";
+                    }
                     o_win_count.Text = (Int32.Parse(o_win_count.Text) + 1).ToString();
                 }
                 else
@@ -191,30 +204,182 @@ namespace Tic_Tac_Toe
             }
         }
 
+        #region AI
         private void computer_make_move()
         {
-            // ToDO AI
+            // priority 1: get tic tac toe
+            // priority 2: block x tic tac toe
+            // priority 3: go for corner space
+            // priority 4: pick open space
+
+            Button move = null;
+
+            // look for tic tac toe opportunities
+            move = look_for_win_or_block("O"); // look for win
+            if(move == null)
+            {
+                move = look_for_win_or_block("X"); // look for block
+                if(move == null)
+                {
+                    move = look_for_corner();
+                    if (move == null)
+                    {
+                        move = look_for_open_space();
+                    }
+                }
+            }
+            if (move != null)
+                move.PerformClick();
         }
+
+        private Button look_for_win_or_block(string mark)
+        {
+            Console.WriteLine("Looking for win or block: " + mark);
+            // horizontal tests
+            if ((A1.Text == mark) && (A2.Text == mark) && (A3.Text == ""))
+                return A3;
+            if ((A2.Text == mark) && (A3.Text == mark) && (A1.Text == ""))
+                return A1;
+            if ((A1.Text == mark) && (A3.Text == mark) && (A2.Text == ""))
+                return A2;
+
+            if ((B1.Text == mark) && (B2.Text == mark) && (B3.Text == ""))
+                return B3;
+            if ((B2.Text == mark) && (B3.Text == mark) && (B1.Text == ""))
+                return B1;
+            if ((B1.Text == mark) && (B3.Text == mark) && (B2.Text == ""))
+                return B2;
+
+            if ((C1.Text == mark) && (C2.Text == mark) && (C3.Text == ""))
+                return C3;
+            if ((C2.Text == mark) && (C3.Text == mark) && (C1.Text == ""))
+                return C1;
+            if ((C1.Text == mark) && (C3.Text == mark) && (C2.Text == ""))
+                return C2;
+
+            // vertical tests
+            if ((A1.Text == mark) && (B1.Text == mark) && (C1.Text == ""))
+                return C1;
+            if ((B1.Text == mark) && (C1.Text == mark) && (A1.Text == ""))
+                return A1;
+            if ((A1.Text == mark) && (C1.Text == mark) && (B1.Text == ""))
+                return B1;
+
+            if ((A2.Text == mark) && (B2.Text == mark) && (C2.Text == ""))
+                return C2;
+            if ((B2.Text == mark) && (C2.Text == mark) && (A2.Text == ""))
+                return A2;
+            if ((A2.Text == mark) && (C2.Text == mark) && (B2.Text == ""))
+                return B2;
+
+            if ((A3.Text == mark) && (B3.Text == mark) && (C3.Text == ""))
+                return C3;
+            if ((B3.Text == mark) && (C3.Text == mark) && (A3.Text == ""))
+                return A3;
+            if ((A3.Text == mark) && (C3.Text == mark) && (B3.Text == ""))
+                return B3;
+
+            // diagonal tests
+            if ((A1.Text == mark) && (B2.Text == mark) && (C3.Text == ""))
+                return C3;
+            if ((B2.Text == mark) && (C3.Text == mark) && (A1.Text == ""))
+                return A1;
+            if ((A1.Text == mark) && (C3.Text == mark) && (B2.Text == ""))
+                return B2;
+
+            if ((A3.Text == mark) && (B2.Text == mark) && (C1.Text == ""))
+                return C1;
+            if ((B2.Text == mark) && (C1.Text == mark) && (A3.Text == ""))
+                return A3;
+            if ((A3.Text == mark) && (C1.Text == mark) && (B2.Text == ""))
+                return B2;
+
+            return null;
+        }
+
+        private Button look_for_corner()
+        {
+            Console.WriteLine("Looking for corner");
+            if (A1.Text == "O")
+            {
+                if (A3.Text == "")
+                    return A3;
+                if (C3.Text == "")
+                    return C3;
+                if (C1.Text == "")
+                    return C1;
+            }
+
+            if (A3.Text == "O")
+            {
+                if (A1.Text == "")
+                    return A1;
+                if (C3.Text == "")
+                    return C3;
+                if (C1.Text == "")
+                    return C1;
+            }
+
+            if (C3.Text == "O")
+            {
+                if (A1.Text == "")
+                    return A1;
+                if (A3.Text == "")
+                    return A3;
+                if (C1.Text == "")
+                    return C1;
+            }
+
+            if (C1.Text == "O")
+            {
+                if (A1.Text == "")
+                    return A1;
+                if (A3.Text == "")
+                    return A3;
+                if (C3.Text == "")
+                    return C3;
+            }
+
+            if (A1.Text == "")
+                return A1;
+            if (A3.Text == "")
+                return A3;
+            if (C3.Text == "")
+                return C3;
+            if (C1.Text == "")
+                return C1;
+
+            return null;
+        }
+
+        private Button look_for_open_space()
+        {
+            Console.WriteLine("Looking for open space");
+            Button b = null;
+            foreach (Control c in Controls)
+            {
+                b = c as Button;
+                if (b != null)
+                {
+                    if (b.Text == "")
+                        return b;
+                }
+            }
+            return null;
+        }
+        #endregion
 
         private void disableButtons()
         {
-            try
+            foreach (Control c in Controls)
             {
-                foreach (Control c in Controls)
+                try
                 {
                     Button b = (Button)c;
                     b.Enabled = false;
                 }
+                catch { }
             }
-            catch { }
-        }
-
-        private void label3_TextChanged(object sender, EventArgs e)
-        {
-            if (label3.Text.ToUpper() == "COMPUTER")
-                against_computer = true;
-            else
-                against_computer = false;
         }
     }
 }
