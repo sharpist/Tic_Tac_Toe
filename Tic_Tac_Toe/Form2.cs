@@ -17,7 +17,7 @@ namespace Tic_Tac_Toe
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonPlay_Click(object sender, EventArgs e)
         {
             Form1.setPlayerNames(p1.Text, p2.Text);
             this.Close();
@@ -26,7 +26,7 @@ namespace Tic_Tac_Toe
         private void p2_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar.ToString() == "\r")
-                button1.PerformClick();
+                buttonPlay.PerformClick();
         }
     }
 }

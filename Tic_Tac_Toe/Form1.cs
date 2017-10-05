@@ -112,8 +112,10 @@ namespace Tic_Tac_Toe
 
         public static void setPlayerNames(string n1, string n2)
         {
-            player1 = n1;
-            player2 = n2;
+            if (n1 != null && n1 != String.Empty)
+                player1 = n1;
+            if (n2 != null && n2 != String.Empty)
+                player2 = n2;
         }
 
         private void label3_TextChanged(object sender, EventArgs e)
